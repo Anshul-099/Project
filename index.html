@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReBoot | Second-hand Electronics &amp; Refurbished Laptop Marketplace</title>
+  <meta name="description" content="Buy and sell quality-checked second-hand electronics and refurbished laptops with warranty. CSE326 project, Group 8.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230e7a5f%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-size=%2720%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Arial%27%3ER%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="#top" class="logo" aria-label="ReBoot home"><span class="logo-mark">R</span>eBoot</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#browse">Shop</a>
+      <a href="#sell">Sell a device</a>
+      <a href="#grades">Condition grades</a>
+      <a href="#how">How it works</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishBtn" title="Saved items" aria-label="Show saved items">♡ <span class="badge" id="wishCount">0</span></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">🛒 <span class="badge" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Certified pre-owned tech</p>
+        <h1>Great devices. <span>Second life.</span> Smaller price.</h1>
+        <p class="lead">Every laptop, phone and gadget on ReBoot is inspected, graded and backed by warranty, so you save up to 60% without the guesswork.</p>
+        <div class="hero-cta">
+          <a href="#browse" class="btn btn-primary">Browse devices</a>
+          <a href="#sell" class="btn btn-ghost">Sell yours</a>
+        </div>
+        <ul class="hero-stats">
+          <li><strong id="statCount">0</strong><span>devices listed</span></li>
+          <li><strong>6 mo</strong><span>max warranty</span></li>
+          <li><strong>7 days</strong><span>easy returns</span></li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-card c1">💻<small>Refurbished laptop</small></div>
+        <div class="hero-card c2">📱<small>Phones</small></div>
+        <div class="hero-card c3">🎮<small>Consoles</small></div>
+        <div class="hero-card c4">🎧<small>Audio</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="container trust-grid">
+      <div><b>✔ 32-point inspection</b><span>Battery, display, ports, keyboard &amp; more</span></div>
+      <div><b>🛡 Warranty included</b><span>Up to 6 months on refurbished items</span></div>
+      <div><b>🔄 7-day returns</b><span>Not happy? Send it back</span></div>
+      <div><b>🚚 Free delivery</b><span>On orders above ₹10,000</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="browse">
+    <div class="container">
+      <div class="section-head">
+        <h2>Shop devices</h2>
+        <p>Search, filter and compare up to three devices side by side.</p>
+      </div>
+
+      <div class="shop-layout">
+        <aside class="filters" id="filters" aria-label="Filters">
+          <div class="filter-top">
+            <h3>Filters</h3>
+            <button class="link-btn" id="resetFilters">Reset</button>
+          </div>
+          <label class="field">Search
+            <input type="search" id="searchInput" placeholder="Try “MacBook” or “i5”">
+          </label>
+          <div class="field">Category
+            <div class="chips" id="categoryChips"></div>
+          </div>
+          <label class="field">Condition
+            <select id="conditionSelect">
+              <option value="all">Any condition</option>
+              <option>Like New</option>
+              <option>Excellent</option>
+              <option>Good</option>
+              <option>Fair</option>
+            </select>
+          </label>
+          <label class="field">Max price: <b id="priceLabel">₹1,50,000</b>
+            <input type="range" id="priceRange" min="2000" max="150000" step="1000" value="150000" aria-label="Maximum price">
+          </label>
+          <label class="check"><input type="checkbox" id="warrantyOnly"> Warranty included only</label>
+          <label class="check"><input type="checkbox" id="savedOnly"> Saved items only</label>
+        </aside>
+
+        <div class="results">
+          <div class="results-bar">
+            <p id="resultCount" aria-live="polite"></p>
+            <label class="sort">Sort by
+              <select id="sortSelect">
+                <option value="featured">Featured</option>
+                <option value="priceAsc">Price: low to high</option>
+                <option value="priceDesc">Price: high to low</option>
+                <option value="discount">Biggest discount</option>
+                <option value="rating">Top rated</option>
+              </select>
+            </label>
+          </div>
+          <div class="grid" id="productGrid"></div>
+          <div class="empty" id="emptyState" hidden>
+            <p>😕 No devices match those filters.</p>
+            <button class="btn btn-ghost" id="emptyReset">Clear filters</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="sell">
+    <div class="container sell-grid">
+      <div>
+        <p class="eyebrow">Got an old device?</p>
+        <h2>Sell it on ReBoot</h2>
+        <p class="lead small">Use the price helper to get a fair asking price, then list it. Your listing appears in the shop straight away (saved in this browser).</p>
+        <div class="estimator" id="estimator">
+          <h3>Price helper</h3>
+          <div class="row">
+            <label class="field">Original price (₹)<input type="number" id="estOriginal" min="1000" max="1000000" placeholder="e.g. 65000"></label>
+            <label class="field">Age (years)<input type="number" id="estAge" min="0" max="10" step="0.5" value="1"></label>
+          </div>
+          <label class="field">Condition
+            <select id="estCondition"><option>Like New</option><option selected>Excellent</option><option>Good</option><option>Fair</option></select>
+          </label>
+          <button class="btn btn-ghost" id="estimateBtn" type="button">Suggest a price</button>
+          <p class="estimate-out" id="estimateOut" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <form class="card-form" id="sellForm" novalidate>
+        <h3>List your device</h3>
+        <label class="field">Title
+          <input id="sTitle" required maxlength="70" placeholder="e.g. Dell XPS 13 (i7, 16GB, 512GB)">
+          <small class="err" data-for="sTitle"></small>
+        </label>
+        <div class="row">
+          <label class="field">Category
+            <select id="sCategory"></select>
+          </label>
+          <label class="field">Brand
+            <input id="sBrand" required placeholder="Dell">
+            <small class="err" data-for="sBrand"></small>
+          </label>
+        </div>
+        <div class="row">
+          <label class="field">Condition
+            <select id="sCondition"><option>Like New</option><option>Excellent</option><option selected>Good</option><option>Fair</option></select>
+          </label>
+          <label class="field">Asking price (₹)
+            <input id="sPrice" type="number" min="500" max="1000000" required>
+            <small class="err" data-for="sPrice"></small>
+          </label>
+        </div>
+        <div class="row">
+          <label class="field">Original price (₹)
+            <input id="sOriginal" type="number" min="500" max="1000000" required>
+            <small class="err" data-for="sOriginal"></small>
+          </label>
+          <label class="field">City
+            <input id="sCity" required placeholder="Jalandhar">
+            <small class="err" data-for="sCity"></small>
+          </label>
+        </div>
+        <label class="field">Key specs / description
+          <textarea id="sDesc" rows="3" maxlength="300" required placeholder="Processor, RAM, storage, battery health, accessories..."></textarea>
+          <small class="err" data-for="sDesc"></small>
+        </label>
+        <label class="field">Seller name
+          <input id="sSeller" required>
+          <small class="err" data-for="sSeller"></small>
+        </label>
+        <button class="btn btn-primary full" type="submit">Publish listing</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="grades">
+    <div class="container">
+      <div class="section-head"><h2>Condition grades</h2><p>Every device is graded by the same checklist.</p></div>
+      <div class="grade-grid" id="gradeGrid"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="how">
+    <div class="container">
+      <div class="section-head"><h2>How it works</h2></div>
+      <ol class="steps">
+        <li><b>1. Find</b><span>Filter by category, condition and budget.</span></li>
+        <li><b>2. Compare</b><span>Put up to 3 devices side by side.</span></li>
+        <li><b>3. Checkout</b><span>Apply a coupon and confirm the order.</span></li>
+        <li><b>4. Enjoy</b><span>Warranty and a 7-day return window.</span></li>
+      </ol>
+      <p class="hint">Try coupons <code>REBOOT10</code> (10% off, max ₹2,000) or <code>WELCOME500</code> (₹500 off above ₹15,000) in the cart.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container foot">
+    <div><span class="logo"><span class="logo-mark">R</span>eBoot</span><p>Second-hand Electronics And Refurbished Laptop Marketplace</p></div>
+    <div><b>CSE326 Project · Group 8</b>
+      <p>Anshul Narayan Singh · Granth Gaur · Ritvik Khajuria</p>
+      <p class="muted">Lovely Professional University. Demo project, no real payments are processed.</p>
+      <button class="link-btn light" id="resetDemo" type="button">Reset demo data</button></div>
+  </div>
+</footer>
+
+<!-- Compare tray -->
+<div class="compare-tray" id="compareTray" hidden>
+  <div class="container tray-inner">
+    <div class="tray-items" id="trayItems"></div>
+    <div class="tray-actions">
+      <button class="btn btn-primary" id="compareBtn">Compare</button>
+      <button class="link-btn" id="clearCompare">Clear</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cart drawer -->
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping cart">
+  <div class="drawer-head"><h3>Your cart</h3><button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button></div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot" id="cartFoot"></div>
+</aside>
+
+<!-- Generic modal -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="Details">
+  <div class="modal-card" id="modalCard">
+    <button class="icon-btn modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/products.js"></script>
+<script src="js/compare.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/sell.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
