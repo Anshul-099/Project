@@ -1,44 +1,38 @@
 # ReBoot – Second-hand Electronics & Refurbished Laptop Marketplace
 
-CSE326 Project-Based Assessment · **Group 8** · Lovely Professional University
-
-| Member | Reg. No | Roll No |
-|---|---|---|
-| Anshul Narayan Singh | 12622239 | RK4P26ARA22 |
-| Granth Gaur | 12623291 | RK4P26ARA23 |
-| Ritvik Khajuria | 12623512 | RK4P26ARA24 |
+ReBoot is a website for buying and selling second-hand electronics and refurbished laptops. Every device has a condition grade, clear warranty info and shows how much cheaper it is than the original price.
 
 ## Problem
-Buying used electronics is risky: unclear condition, no warranty, unfair pricing. ReBoot is a marketplace where every device carries a standard condition grade, warranty information and a transparent discount against the original price, and where people can sell their own devices with a fair-price helper.
+Buying used electronics is a gamble: you often can't tell what condition it's really in, there's no warranty, and the price is a guess. ReBoot grades every device on the same scale, shows what you save, and gives sellers a price helper so they don't have to guess either.
 
 ## Features
 - Catalogue of 16 devices across 6 categories (laptops, phones, tablets, cameras, consoles, audio)
-- Live search, category chips, condition, max-price, warranty-only and saved-only filters, 5 sort options
+- Live search, category chips, condition, max-price, warranty-only and saved-only filters, and 5 sort options
 - Product detail view with specs, condition-grade explanation, savings and warranty
-- Saved items (wishlist) and side-by-side comparison of up to 3 devices (best values highlighted)
-- Cart with coupons (`REBOOT10`, `WELCOME500`), free-delivery threshold, validated checkout and order confirmation
+- Saved items (wishlist) and side-by-side comparison of up to 3 devices, with the best values highlighted
+- Cart with coupons (`REBOOT10`, `WELCOME500`), free delivery on orders of ₹10,000 or more, checkout form with validation, and an order confirmation
 - Sell form with validation and a price helper (depreciation by age and condition); new listings appear in the shop immediately
-- Each device is one-of-a-kind: after an order it is marked **Sold** and can't be bought again
-- Responsive layout, keyboard accessible, data persisted in `localStorage` (footer has a **Reset demo data** button)
+- Every device is a single piece: once it's ordered it is marked **Sold** and can't be bought again
+- Works on phones and desktops, can be used with a keyboard, and keeps your data in `localStorage` (the footer has a **Reset demo data** button)
 
 ## Tech
-HTML5, CSS3 (Grid/Flexbox, custom properties), vanilla JavaScript (no frameworks or build step).
+HTML5, CSS3 (Grid/Flexbox, custom properties), vanilla JavaScript. No frameworks, no backend and no build step.
 
-## Structure
+## Project structure
 ```
 index.html
 css/style.css
 js/data.js       catalogue, constants, coupons
 js/utils.js      helpers (formatting, storage, modal, toast)
-js/products.js   filters, sorting, product cards, detail view, wishlist   (Member 1)
-js/cart.js       cart, coupons, checkout, orders                          (Member 2)
-js/compare.js    comparison tray and table                                (Member 3)
-js/sell.js       sell form, validation, price helper                      (Member 3)
+js/products.js   filters, sorting, product cards, detail view, wishlist
+js/cart.js       cart, coupons, checkout, orders
+js/compare.js    comparison tray and table
+js/sell.js       sell form, validation, price helper
 js/main.js       start-up and shared events
 ```
 
 ## Run locally
-Open `index.html` in a browser. No install needed.
+Open `index.html` in a browser. No installation needed.
 
 ## Deploy (GitHub Pages)
 Repo → Settings → Pages → Deploy from branch → `main` / `(root)`.
